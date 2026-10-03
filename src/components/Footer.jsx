@@ -1,14 +1,13 @@
 import React from 'react';
-import { Container } from 'react-bootstrap';
 
-export const Footer = () => {
+export function Footer() {
   return (
-    <footer className="py-4 mt-auto border-top border-light bg-white bg-opacity-75 backdrop-blur-sm">
-      <Container className="text-center">
-        <p className="mb-0 small fw-light text-muted">
+    <footer className="py-4 mt-auto border-top border-light bg-white bg-opacity-75 glass-footer">
+      <div className="container text-center">
+        <p className="mb-0 text-muted fw-light small">
           &copy; 2026 HotelAdmin. Panel de administración reservado.
         </p>
-      </Container>
+      </div>
     </footer>
   );
-};
+}

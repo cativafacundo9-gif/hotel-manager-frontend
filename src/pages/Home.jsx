@@ -26,8 +26,8 @@ export const Home = () => {
       }
     };
 
-    actualizarTiempo();
-    const intervalo = setInterval(actualizarTiempo, 1000);
+    actualizarTiempo(); // Ejecutar inmediatamente al montar
+    const intervalo = setInterval(actualizarTiempo, 1000); // Luego cada segundo
     
     return () => clearInterval(intervalo);
   }, []);
@@ -39,12 +39,14 @@ export const Home = () => {
     { num: '04', title: 'Mantenimiento', desc: 'Control de reportes de fallas y cronograma de limpieza.', img: imgMantenimiento, path: '/mantenimiento' },
   ];
 
-  return (
+ return (
     <main className="container my-5 flex-grow-1">
+      {/* Fondo oscuro sólido sin bg-opacity ni blur */}
       <section className="text-white p-4 p-md-5 rounded-3 shadow-lg mb-5 d-md-flex justify-content-between align-items-center bg-dark">
         <div className="mb-4 mb-md-0">
+          {/* Título unificado en tamaño y todo en color blanco */}
           <h1 className="display-6 font-serif fw-normal mb-2 text-white">
-            {saludo}, <span className="fw-bold font-serif">Admin</span> | Panel General
+            {saludo}, <span className="fw-bold font-serif">Admin</span> | Panel general
           </h1>
           <p className="lead mb-0 text-white-50 fs-6 fw-light">Seleccione un módulo para gestionar las operaciones del hotel.</p>
         </div>

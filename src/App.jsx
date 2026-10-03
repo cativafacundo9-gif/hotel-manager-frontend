@@ -2,9 +2,8 @@ import { Routes, Route } from 'react-router-dom';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
 import { Home } from './pages/Home';
+import Habitaciones from './components/Habitaciones';
 
-// Componentes temporales vacíos hasta migrar el resto
-const Habitaciones = () => <h2 className="text-center mt-5">Sección Habitaciones en construcción</h2>;
 const Reservas = () => <h2 className="text-center mt-5">Sección Reservas en construcción</h2>;
 
 function App() {
