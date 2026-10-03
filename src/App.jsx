@@ -3,8 +3,7 @@ import { Header } from './components/Header';
 import { Footer } from './components/Footer';
 import { Home } from './pages/Home';
 import Habitaciones from './components/Habitaciones';
-
-const Reservas = () => <h2 className="text-center mt-5">Sección Reservas en construcción</h2>;
+import Reservas from './components/Reservas';
 
 function App() {
   return (
@@ -14,7 +13,6 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/habitaciones" element={<Habitaciones />} />
         <Route path="/reservas" element={<Reservas />} />
-        {/* Aquí agregaremos las demás rutas luego */}
       </Routes>
       <Footer />
     </div>

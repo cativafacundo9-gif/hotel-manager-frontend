@@ -1,0 +1,15 @@
+.glass-hero {
+  backdrop-filter: blur(5px);
+}
+
+.text-gold {
+  color: #C4A47C !important;
+}
+
+.border-gold {
+  border-color: #C4A47C !important;
+}
+
+.bg-gold-light {
+  background-color: rgba(196, 164, 124, 0.15) !important;
+}
