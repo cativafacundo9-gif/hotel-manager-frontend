@@ -17,6 +17,7 @@ const historialData = [
 ];
 
 const Huespedes = () => {
+  // useState: Manejan la visibilidad (colapsables) de las secciones y el buscador en tiempo real
   const [openDirectorio, setOpenDirectorio] = useState(false);
   const [openHistorial, setOpenHistorial] = useState(false);
   const [busqueda, setBusqueda] = useState('');

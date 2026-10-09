@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import TarjetaReserva from '../components/TarjetaReserva';
 import '../styles/Reservas.css';
 
@@ -26,7 +26,12 @@ export default function Reservas() {
   const [mostrarFormulario, setMostrarFormulario] = useState(false);
   const [mostrarListado, setMostrarListado] = useState(true);
 
-  const [reservas, setReservas] = useState(reservasIniciales);
+  // useState & useEffect: Inicializamos leyendo del localStorage si existe, o usamos reservasIniciales
+  const [reservas, setReservas] = useState(() => {
+    const reservasGuardadas = localStorage.getItem('reservasHotel');
+    return reservasGuardadas ? JSON.parse(reservasGuardadas) : reservasIniciales;
+  });
+
   const [alerta, setAlerta] = useState(null);
 
   const [formData, setFormData] = useState({
@@ -35,6 +40,11 @@ export default function Reservas() {
     fechaIngreso: '',
     fechaSalida: ''
   });
+
+  // useEffect: Sincroniza el estado de las reservas con el localStorage cada vez que el array 'reservas' cambia
+  useEffect(() => {
+    localStorage.setItem('reservasHotel', JSON.stringify(reservas));
+  }, [reservas]);
 
   const handleChange = (e) => {
     const { id, value } = e.target;

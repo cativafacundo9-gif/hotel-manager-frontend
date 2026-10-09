@@ -48,6 +48,7 @@ const habitacionesData = [
 ];
 
 export default function Habitaciones() {
+  // TP7 - useState: Manejamos el estado del filtro ('todas', 'disponible', 'ocupada')
   const [filtro, setFiltro] = useState('todas');
 
   const habitacionesFiltradas = habitacionesData.filter((hab) => {
@@ -67,7 +68,7 @@ export default function Habitaciones() {
         </p>
       </section>
 
-      {/* Botones de Filtro */}
+      {/* Botones de Filtro (Interactivos mediante useState) */}
       <div className="d-flex justify-content-center gap-2 mb-5">
         <button
           type="button"

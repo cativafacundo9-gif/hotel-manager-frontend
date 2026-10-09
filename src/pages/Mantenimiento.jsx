@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Container, Row, Col, Card, Button, Collapse } from 'react-bootstrap';
 import TarjetaReporte from '../components/TarjetaReporte';
 import TarjetaTarea from '../components/TarjetaTarea';
@@ -18,7 +18,17 @@ const tareasData = [
 const Mantenimiento = () => {
   const [openReportes, setOpenReportes] = useState(false);
   const [openCronograma, setOpenCronograma] = useState(false);
-  const [reportes, setReportes] = useState(reportesIniciales);
+
+  // useState & useEffect: Inicializamos leyendo del localStorage si existe, o usamos reportesIniciales
+  const [reportes, setReportes] = useState(() => {
+    const reportesGuardados = localStorage.getItem('reportesMantenimiento');
+    return reportesGuardados ? JSON.parse(reportesGuardados) : reportesIniciales;
+  });
+
+  // useEffect: Sincroniza y guarda los reportes en el localStorage cada vez que su estado cambia
+  useEffect(() => {
+    localStorage.setItem('reportesMantenimiento', JSON.stringify(reportes));
+  }, [reportes]);
 
   const toggleEstado = (id) => {
     const nuevosReportes = reportes.map(reporte => {
