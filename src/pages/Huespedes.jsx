@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
-import { Container, Row, Col, Card, Button, Form, Badge, Collapse } from 'react-bootstrap';
+import { Container, Row, Col, Card, Button, Form, Collapse } from 'react-bootstrap';
+import TarjetaHuesped from '../components/TarjetaHuesped';
+import TarjetaHistorial from '../components/TarjetaHistorial';
 
 const huespedesData = [
   { id: 1, nombre: 'Juan Pérez', dni: '12.345.678', habitacion: '102 - Suite', estado: 'Activo', color: 'success' },
@@ -15,14 +17,10 @@ const historialData = [
 ];
 
 const Huespedes = () => {
-  // Estados para controlar los menús desplegables
   const [openDirectorio, setOpenDirectorio] = useState(false);
   const [openHistorial, setOpenHistorial] = useState(false);
-  
-  // Estado para el buscador en tiempo real
   const [busqueda, setBusqueda] = useState('');
 
-  // Lógica de filtrado en tiempo real
   const huespedesFiltrados = huespedesData.filter((huesped) =>
     huesped.nombre.toLowerCase().includes(busqueda.toLowerCase())
   );
@@ -100,16 +98,7 @@ const Huespedes = () => {
           <Row xs={1} md={2} lg={3} className="g-3">
             {huespedesFiltrados.length > 0 ? (
               huespedesFiltrados.map((huesped) => (
-                <Col key={huesped.id}>
-                  <Card className="h-100 border-0 shadow-sm rounded-3 p-3">
-                    <Card.Body>
-                      <h4 className="h6 font-serif fw-bold text-dark mb-2">{huesped.nombre}</h4>
-                      <p className="text-muted small mb-1"><strong>DNI:</strong> {huesped.dni}</p>
-                      <p className="text-muted small mb-2"><strong>Habitación:</strong> {huesped.habitacion}</p>
-                      <Badge bg={huesped.color}>{huesped.estado}</Badge>
-                    </Card.Body>
-                  </Card>
-                </Col>
+                <TarjetaHuesped key={huesped.id} huesped={huesped} />
               ))
             ) : (
               <Col xs={12} className="text-center py-4">
@@ -131,17 +120,7 @@ const Huespedes = () => {
 
           <Row xs={1} md={2} lg={3} className="g-3">
             {historialData.map((item) => (
-              <Col key={item.id}>
-                <Card className="h-100 border-0 shadow-sm rounded-3 p-3">
-                  <Card.Body>
-                    <h4 className="h6 font-serif fw-bold text-dark mb-2">{item.nombre}</h4>
-                    <p className="text-muted small mb-1"><strong>Habitación:</strong> {item.habitacion}</p>
-                    <p className="text-muted small mb-1"><strong>Fechas:</strong> {item.fechas}</p>
-                    <p className="text-muted small mb-2"><strong>Preferencia:</strong> {item.pref}</p>
-                    <Badge bg={item.color}>{item.estado}</Badge>
-                  </Card.Body>
-                </Card>
-              </Col>
+              <TarjetaHistorial key={item.id} item={item} />
             ))}
           </Row>
         </div>
