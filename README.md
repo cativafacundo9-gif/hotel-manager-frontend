@@ -43,11 +43,11 @@ Para clonar y ejecutar este proyecto en tu entorno local, sigue estos pasos:
 
 Clonar el repositorio:
 
-git clone <https://github.com/cativafacundo9-gif/hotel-manager-frontend>
+git clone https://github.com/cativafacundo9-gif/hotel-manager-frontend
 
 Navegar al directorio del proyecto:
 
-cd <hotel_manager_fronted>
+cd <hotel-manager-fronted>
 
 Instalar las dependencias:
 
