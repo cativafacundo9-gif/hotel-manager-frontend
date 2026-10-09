@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import TarjetaHabitacion from '../components/TarjetaHabitacion'; // Importamos el nuevo componente
 import '../styles/Habitaciones.css';
 
 const habitacionesData = [
@@ -48,14 +49,6 @@ const habitacionesData = [
 
 export default function Habitaciones() {
   const [filtro, setFiltro] = useState('todas');
-  const [detallesVisibles, setDetallesVisibles] = useState({});
-
-  const toggleDetalles = (id) => {
-    setDetallesVisibles((prev) => ({
-      ...prev,
-      [id]: !prev[id]
-    }));
-  };
 
   const habitacionesFiltradas = habitacionesData.filter((hab) => {
     if (filtro === 'todas') return true;
@@ -99,66 +92,10 @@ export default function Habitaciones() {
         </button>
       </div>
 
-      {/* Grilla de Habitaciones */}
       <section className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
-        {habitacionesFiltradas.map((hab) => {
-          const estaAbierto = Boolean(detallesVisibles[hab.id]);
-
-          return (
-            <article key={hab.id} className="col tarjeta-habitacion">
-              <div className="card h-100 border-0 shadow-sm bg-white rounded-3">
-                <div className="card-body p-4 d-flex flex-column">
-                  <h2 className="h4 font-serif fw-bold text-dark mb-3">{hab.titulo}</h2>
-                  <p className="card-text text-muted small mb-4">
-                    <span className="d-block mb-2">
-                      Estado:{' '}
-                      <span className={`badge ${hab.estadoBadgeClass} fw-normal`}>
-                        {hab.estadoTexto}
-                      </span>
-                    </span>
-                    <span className="d-block">
-                      Limpieza: <span className={`fw-bold ${hab.limpiezaClass}`}>{hab.limpieza}</span>
-                    </span>
-                  </p>
-
-                  {/* Botón para desplegar detalles */}
-                  <button
-                    className="btn btn-outline-dark w-100 mt-auto fw-semibold btn-detalles"
-                    type="button"
-                    onClick={() => toggleDetalles(hab.id)}
-                  >
-                    {estaAbierto ? 'Ocultar Detalles' : 'Ver Detalles'}
-                  </button>
-
-                  {/* Panel de detalles dinámico */}
-                  {estaAbierto && (
-                    <div className="mt-3">
-                      <div className="p-3 bg-light rounded-3 border border-light small shadow-sm">
-                        <ul className="list-unstyled mb-0 text-muted">
-                          <li className="mb-1">
-                            <strong>Capacidad:</strong> {hab.capacidad}
-                          </li>
-                          <li className="mb-1">
-                            <strong>Camas:</strong> {hab.camas}
-                          </li>
-                          <li className="mb-1">
-                            <strong>Vista:</strong> {hab.vista}
-                          </li>
-                          <li className="mb-1">
-                            <strong>Comodidades:</strong> {hab.comodidades}
-                          </li>
-                          <li className="mt-2 text-dark fw-bold">
-                            Tarifa Base: {hab.tarifa}
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-                  )}
-                </div>
-              </div>
-            </article>
-          );
-        })}
+        {habitacionesFiltradas.map((hab) => (
+          <TarjetaHabitacion key={hab.id} habitacion={hab} />
+        ))}
       </section>
     </main>
   );
