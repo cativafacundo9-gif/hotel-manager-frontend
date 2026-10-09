@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
-import { Container, Row, Col, Card, Button, Badge, Collapse } from 'react-bootstrap';
+import { Container, Row, Col, Card, Button, Collapse } from 'react-bootstrap';
+import TarjetaReporte from '../components/TarjetaReporte';
+import TarjetaTarea from '../components/TarjetaTarea';
 
 const reportesIniciales = [
   { id: 1, titulo: 'Aire acondicionado roto en la 102', ubicacion: 'Habitación 102', prioridad: 'Alta', estado: 'Pendiente' },
@@ -32,9 +34,7 @@ const Mantenimiento = () => {
   };
 
   return (
-
     <Container className="py-4 flex-grow-1">
-      
       <section 
         className="text-white text-center p-4 rounded-3 shadow-sm mb-4 bg-dark d-flex flex-column justify-content-center" 
         style={{ minHeight: '160px', '--bs-bg-opacity': .75, backdropFilter: 'blur(5px)' }}
@@ -83,29 +83,11 @@ const Mantenimiento = () => {
         <div id="seccion-reportes" className="mt-4 pt-2">
           <Row xs={1} md={2} lg={3} className="g-3">
             {reportes.map((reporte) => (
-              <Col key={reporte.id}>
-                <Card className="h-100 border-0 shadow-sm rounded-3 p-3">
-                  <Card.Body className="d-flex flex-column">
-                    <div className="d-flex justify-content-between align-items-start mb-2">
-                      <h4 className="h6 font-serif fw-bold text-dark mb-0">{reporte.titulo}</h4>
-                      <Badge bg={reporte.estado === 'Pendiente' ? 'danger' : 'success'}>
-                        {reporte.estado}
-                      </Badge>
-                    </div>
-                    <p className="text-muted small mb-1"><strong>Ubicación:</strong> {reporte.ubicacion}</p>
-                    <p className="text-muted small mb-3"><strong>Prioridad:</strong> {reporte.prioridad}</p>
-                    
-                    <Button 
-                      variant={reporte.estado === 'Pendiente' ? 'outline-success' : 'outline-secondary'} 
-                      size="sm"
-                      className="w-100 mt-auto fw-semibold shadow-sm"
-                      onClick={() => toggleEstado(reporte.id)}
-                    >
-                      {reporte.estado === 'Pendiente' ? 'Marcar como resuelto' : 'Deshacer (Volver a Pendiente)'}
-                    </Button>
-                  </Card.Body>
-                </Card>
-              </Col>
+              <TarjetaReporte 
+                key={reporte.id} 
+                reporte={reporte} 
+                toggleEstado={toggleEstado} 
+              />
             ))}
           </Row>
         </div>
@@ -115,16 +97,7 @@ const Mantenimiento = () => {
         <div id="seccion-cronograma" className="mt-4 pt-2">
           <Row xs={1} md={2} lg={3} className="g-3">
             {tareasData.map((tarea) => (
-              <Col key={tarea.id}>
-                <Card className="h-100 border-0 shadow-sm rounded-3 p-3">
-                  <Card.Body>
-                    <h4 className="h6 font-serif fw-bold text-dark mb-2">{tarea.titulo}</h4>
-                    <p className="text-muted small mb-1"><strong>Sector:</strong> {tarea.sector}</p>
-                    <p className="text-muted small mb-2"><strong>Fecha programada:</strong> {tarea.fecha}</p>
-                    <Badge bg="info" text="dark">{tarea.estado}</Badge>
-                  </Card.Body>
-                </Card>
-              </Col>
+              <TarjetaTarea key={tarea.id} tarea={tarea} />
             ))}
           </Row>
         </div>

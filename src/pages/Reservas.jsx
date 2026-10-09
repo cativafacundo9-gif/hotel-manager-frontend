@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import TarjetaReserva from '../components/TarjetaReserva';
 import '../styles/Reservas.css';
 
 // Datos iniciales de ejemplo
@@ -242,33 +243,11 @@ export default function Reservas() {
               </div>
             ) : (
               reservas.map((res) => (
-                <article key={res.id} className="col">
-                  <div className="card h-100 border-0 shadow-sm bg-white rounded-3">
-                    <div className="card-body p-4 d-flex flex-column">
-                      <div className="d-flex justify-content-between align-items-start mb-2">
-                        <h4 className="h5 font-serif fw-bold text-dark mb-0">{res.cliente}</h4>
-                        <span className="badge bg-success fw-normal">{res.estado}</span>
-                      </div>
-                      <p className="text-muted small mb-3">{res.habitacion}</p>
-                      
-                      <ul className="list-unstyled small text-muted mb-4 border-top pt-3">
-                        <li className="mb-1">
-                          <strong>Check-In:</strong> {res.fechaIngreso}
-                        </li>
-                        <li>
-                          <strong>Check-Out:</strong> {res.fechaSalida}
-                        </li>
-                      </ul>
-
-                      <button
-                        className="btn btn-outline-danger btn-sm mt-auto w-100 fw-semibold"
-                        onClick={() => handleCancelar(res.id)}
-                      >
-                        Cancelar Reserva
-                      </button>
-                    </div>
-                  </div>
-                </article>
+                <TarjetaReserva 
+                  key={res.id} 
+                  reserva={res} 
+                  onCancelar={handleCancelar} 
+                />
               ))
             )}
           </div>
