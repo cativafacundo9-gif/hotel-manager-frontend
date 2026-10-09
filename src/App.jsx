@@ -2,11 +2,10 @@ import { Routes, Route } from 'react-router-dom';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
 import { Home } from './pages/Home';
-import Habitaciones from './components/Habitaciones';
-import Reservas from './components/Reservas';
-import Huespedes from './components/Huespedes';
-import Mantenimiento from './components/Mantenimiento';
-
+import Habitaciones from './pages/Habitaciones';
+import Reservas from './pages/Reservas';
+import Huespedes from './pages/Huespedes';
+import Mantenimiento from './pages/Mantenimiento';
 function App() {
   return (
     <div className="d-flex flex-column min-vh-100">
