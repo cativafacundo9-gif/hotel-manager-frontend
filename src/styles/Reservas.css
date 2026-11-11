@@ -2,14 +2,14 @@
   backdrop-filter: blur(5px);
 }
 
-.text-gold {
-  color: #C4A47C !important;
+.text-gold.text-gold {
+  color: #C4A47C;
 }
 
-.border-gold {
-  border-color: #C4A47C !important;
+.border-gold.border-gold {
+  border-color: #C4A47C;
 }
 
-.bg-gold-light {
-  background-color: rgba(196, 164, 124, 0.15) !important;
+.bg-gold-light.bg-gold-light {
+  background-color: rgba(196, 164, 124, 0.15);
 }
