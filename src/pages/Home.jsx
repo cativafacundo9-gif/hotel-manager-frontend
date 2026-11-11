@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { ModuleCard } from '../components/ModuleCard';
-import { CurrencyWidget } from '../components/CurrencyWidget';
+import HolidayWidget from '../components/HolidayWidget';
 
 import imgHabitaciones from '../assets/img/habitaciones.jpg';
 import imgReservas from '../assets/img/reservas.jpg';
@@ -61,7 +61,7 @@ export const Home = () => {
       </section>
 
       {/* Módulos principales del hotel */}
-      <section className="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
+      <section className="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4 mb-5">
         {modules.map((mod) => (
           <ModuleCard 
             key={mod.num}
@@ -74,8 +74,8 @@ export const Home = () => {
         ))}
       </section>
 
-      {/* Widget de Conversión de Divisas en la parte inferior de los módulos */}
-      <CurrencyWidget />
+      {/* Widget de Próximos Feriados y Fines de Semana */}
+      <HolidayWidget />
     </main>
   );
 };
