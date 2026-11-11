@@ -26,6 +26,19 @@ React-Bootstrap: Framework de componentes UI responsivos.
 
 CSS Puro: Estilos globales y específicos mantenidos para personalización a medida.
 
+🔍 Estrategia y Optimización SEO
+
+Actualmente, el proyecto sienta las bases técnicas para el posicionamiento web enfocado en la experiencia de usuario y rendimiento (Core Web Vitals):
+
+1. **URLs Amigables y Estructura de Rutas:** Navegación semántica mediante `React Router DOM` (`/habitaciones`, `/reservas`, `/mantenimiento`), evitando parámetros oscuros en la URL.
+2. **Rendimiento y Tiempos de Carga (Core Web Vitals):** Empaquetado optimizado con Vite y carga modular de componentes React para minimizar el tiempo hasta la primera interacción del usuario.
+
+**Próximos pasos para SEO Técnico (Roadmap):**
+
+- Integración de `react-helmet-async` para metadatos y títulos dinámicos por página.
+- Incorporación de `sitemap.xml` y `robots.txt` en el directorio público.
+- Implementación de Open Graph tags para compartición en redes sociales.
+
 📁 Estructura del Proyecto
 
 El proyecto sigue una arquitectura profesional basada en la separación de responsabilidades:
